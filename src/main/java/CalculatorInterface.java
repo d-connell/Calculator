@@ -1,10 +1,11 @@
+import java.util.EnumSet;
 import java.util.Scanner;
 
-public class LambdasCalculator {
+public class CalculatorInterface {
 
     boolean running;
 
-    public LambdasCalculator() {
+    public CalculatorInterface() {
         running = true;
         MessagePrinter.printInitialMessage();
         interactWithUser();
@@ -32,19 +33,10 @@ public class LambdasCalculator {
             case "help":
                 MessagePrinter.printHelp();
                 break;
-            case "add":
-                operator = Operator.ADD;
-                break;
-            case "subtract":
-                operator = Operator.SUBTRACT;
-                break;
-            case "multiply":
-                operator = Operator.MULTIPLY;
-                break;
-            case "divide":
-                operator = Operator.DIVIDE;
-                break;
             default:
+                operator = checkOperatorLabels(input);
+        }
+        if (operator == null) {
                 MessagePrinter.printOperationNotRecognised(input);
         }
         return operator;
@@ -63,6 +55,13 @@ public class LambdasCalculator {
             interactWithUser();
         }
         return input;
+    }
+
+    private Operator checkOperatorLabels(String input) {
+        return EnumSet.allOf(Operator.class)
+                .stream()
+                .filter(operator -> operator.getLabel().equals(input))
+                .reduce(null, (acc, element) -> element);
     }
 
 }

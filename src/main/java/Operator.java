@@ -1,17 +1,19 @@
 public enum Operator {
 
-    ADD (Double::sum),
-    SUBTRACT ((x, y) -> x - y),
-    MULTIPLY ((x, y) -> x * y),
-    DIVIDE ((x, y) -> x / y);
+    ADD ("add", Double::sum),
+    SUBTRACT ("subtract", (x, y) -> x - y),
+    MULTIPLY ("multiply", (x, y) -> x * y),
+    DIVIDE ("divide", (x, y) -> x / y);
 
+    private final String label;
     private final BinaryOperation binaryOperation;
 
     interface BinaryOperation {
         double apply(double x, double y);
     }
 
-    Operator(final BinaryOperation binaryOperation) {
+    Operator(String label, final BinaryOperation binaryOperation) {
+        this.label = label;
         this.binaryOperation = binaryOperation;
     }
 
@@ -19,4 +21,7 @@ public enum Operator {
         return binaryOperation.apply(x, y);
     }
 
+    public String getLabel() {
+        return label;
+    }
 }
