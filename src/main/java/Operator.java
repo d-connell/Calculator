@@ -3,7 +3,8 @@ public enum Operator {
     ADD ("add", Double::sum),
     SUBTRACT ("subtract", (x, y) -> x - y),
     MULTIPLY ("multiply", (x, y) -> x * y),
-    DIVIDE ("divide", (x, y) -> x / y);
+    DIVIDE ("divide", (x, y) -> x / y),
+    EXPONENTIAL ("exponential", (x, y) -> Math.pow(x, y));
 
     private final String label;
     private final BinaryOperation binaryOperation;
