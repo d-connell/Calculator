@@ -21,4 +21,12 @@ public class MessagePrinter {
         System.out.println("Enter help to see these instructions again.\n");
     }
 
+    public static void printNeedANumber() {
+        System.out.println("A number is required, please try again.");
+    }
+
+    public static void printOperationNotRecognised(String input) {
+        System.out.println("Requested operator '" + input + "' is not recognised, please try again.");
+    }
+
 }

@@ -5,8 +5,8 @@ public class LambdasCalculator {
     boolean running;
 
     public LambdasCalculator() {
-        MessagePrinter.printInitialMessage();
         running = true;
+        MessagePrinter.printInitialMessage();
         interactWithUser();
     }
 
@@ -16,9 +16,9 @@ public class LambdasCalculator {
             Scanner scanner = new Scanner(System.in);
             Operator operator = getOperationType(scanner);
             if (operator != null) {
-                double firstNumber = getNumber(scanner);
-                double secondNumber = getNumber(scanner);
-                calculateAndDisplay(operator, firstNumber, secondNumber);
+                double x = getNumber(scanner);
+                double y = getNumber(scanner);
+                System.out.println(operator.apply(x, y));
             }
         }
     }
@@ -45,7 +45,7 @@ public class LambdasCalculator {
                 operator = Operator.DIVIDE;
                 break;
             default:
-                System.out.println("Requested operator '" + input + "' is not recognised, please try again.");
+                MessagePrinter.printOperationNotRecognised(input);
         }
         return operator;
     }
@@ -59,27 +59,10 @@ public class LambdasCalculator {
         try {
             input = scanner.nextDouble();
         } catch (Exception e) {
-            System.out.println("A number is required.  The program will reset.");
+            MessagePrinter.printNeedANumber();
             interactWithUser();
         }
         return input;
-    }
-
-    private void calculateAndDisplay(Operator operator, double x, double y) {
-        switch (operator) {
-            case ADD:
-                System.out.println(Operator.add.apply(x, y));
-                break;
-            case SUBTRACT:
-                System.out.println(Operator.subtract.apply(x, y));
-                break;
-            case MULTIPLY:
-                System.out.println(Operator.multiply.apply(x, y));
-                break;
-            case DIVIDE:
-                System.out.println(Operator.divide.apply(x, y));
-                break;
-        }
     }
 
 }
