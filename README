@@ -1,0 +1,4 @@
+A simple calculator, created to practice using lambdas.
+
+To add additional operations,
+    simply insert a new enum in Operator.java with an appropriate String label and lambda method.

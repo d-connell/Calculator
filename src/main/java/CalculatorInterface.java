@@ -1,4 +1,3 @@
-import java.util.EnumSet;
 import java.util.Scanner;
 
 public class CalculatorInterface {
@@ -7,13 +6,13 @@ public class CalculatorInterface {
 
     public CalculatorInterface() {
         running = true;
-        MessagePrinter.printInitialMessage();
+        MessagePrinter.welcomeMessage();
         interactWithUser();
     }
 
     private void interactWithUser() {
         while (running) {
-            MessagePrinter.printSimpleInstruction();
+            MessagePrinter.simpleInstruction();
             Scanner scanner = new Scanner(System.in);
             Operator operator = getOperationType(scanner);
             if (operator != null) {
@@ -31,13 +30,13 @@ public class CalculatorInterface {
             case "exit":
                 terminate();
             case "help":
-                MessagePrinter.printHelp();
+                MessagePrinter.standardHelpMessage();
                 break;
             default:
-                operator = checkOperatorLabels(input);
+                operator = Operator.lookForMatchingOperatorLabel(input);
         }
         if (operator == null) {
-                MessagePrinter.printOperationNotRecognised(input);
+                MessagePrinter.operationNotRecognised(input);
         }
         return operator;
     }
@@ -51,17 +50,10 @@ public class CalculatorInterface {
         try {
             input = scanner.nextDouble();
         } catch (Exception e) {
-            MessagePrinter.printNeedANumber();
+            MessagePrinter.needANumber();
             interactWithUser();
         }
         return input;
-    }
-
-    private Operator checkOperatorLabels(String input) {
-        return EnumSet.allOf(Operator.class)
-                .stream()
-                .filter(operator -> operator.getLabel().equals(input))
-                .reduce(null, (acc, element) -> element);
     }
 
 }
