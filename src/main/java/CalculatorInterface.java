@@ -24,7 +24,7 @@ public class CalculatorInterface {
     }
 
     Operator getOperationType(String input) {
-        Operator operator = null;
+        Operator operator;
         switch (input) {
             case "exit":
                 terminate();
