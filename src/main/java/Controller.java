@@ -15,15 +15,10 @@ public class Controller {
             MessagePrinter.instruction();
             Scanner scanner = new Scanner(System.in);
             double firstNumber = parseFirstInput(scanner.next());
-            String secondInput = scanner.next();
-            OperationType operationType = OperationType.match(secondInput);
-            if (operationType == null) {
-                MessagePrinter.operationTypeNotRecognised(secondInput);
-            } else {
-                double secondNumber = getNumber(scanner);
-                double result = operationType.apply(firstNumber, secondNumber);
-                MessagePrinter.result(firstNumber, operationType.getLabel(), secondNumber, result);
-            }
+            OperationType operationType = parseSecondInput(scanner.next());
+            double secondNumber = parseNumber(scanner.next(), false);
+            double result = operationType.apply(firstNumber, secondNumber);
+            MessagePrinter.result(firstNumber, operationType.getLabel(), secondNumber, result);
         }
     }
 
@@ -35,7 +30,7 @@ public class Controller {
             case "help":
                 processHelpRequest();
             default:
-                firstInput = getFirstNumber(input);
+                firstInput = parseNumber(input, true);
         }
         return firstInput;
     }
@@ -49,26 +44,28 @@ public class Controller {
         interact();
     }
 
-    private double getFirstNumber(String input) {
-        double firstNumber = 0;
+    private double parseNumber(String input, boolean isFirstInput) {
+        double number = 0;
         try {
-            firstNumber = Double.parseDouble(input);
-        } catch (NumberFormatException exception) {
-            MessagePrinter.firstInputNotRecognised();
+            number = Double.parseDouble(input);
+        } catch (Exception e) {
+            if (isFirstInput) {
+                MessagePrinter.firstInputNotRecognised();
+            } else {
+                MessagePrinter.requireNumber();
+            }
             interact();
         }
-        return firstNumber;
+        return number;
     }
 
-    private double getNumber(Scanner scanner) {
-        double input = 0;
-        try {
-            input = scanner.nextDouble();
-        } catch (Exception e) {
-            MessagePrinter.requireNumber();
+    private OperationType parseSecondInput(String input) {
+        OperationType operationType = OperationType.match(input);
+        if (operationType == null) {
+            MessagePrinter.operationTypeNotRecognised(input);
             interact();
         }
-        return input;
+        return operationType;
     }
 
 }
