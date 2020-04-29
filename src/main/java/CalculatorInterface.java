@@ -14,7 +14,7 @@ public class CalculatorInterface {
         while (running) {
             MessagePrinter.simpleInstruction();
             Scanner scanner = new Scanner(System.in);
-            Operator operator = getOperationType(scanner);
+            Operator operator = getOperationType(scanner.next().toLowerCase());
             if (operator != null) {
                 double x = getNumber(scanner);
                 double y = getNumber(scanner);
@@ -23,9 +23,8 @@ public class CalculatorInterface {
         }
     }
 
-    private Operator getOperationType(Scanner scanner) {
+    Operator getOperationType(String input) {
         Operator operator = null;
-        String input = scanner.next().toLowerCase();
         switch (input) {
             case "exit":
                 terminate();
@@ -33,7 +32,7 @@ public class CalculatorInterface {
                 MessagePrinter.standardHelpMessage();
                 break;
             default:
-                operator = Operator.lookForMatchingOperatorLabel(input);
+                operator = Operator.lookForOperatorWithMatchingLabel(input);
         }
         if (operator == null) {
                 MessagePrinter.operationNotRecognised(input);

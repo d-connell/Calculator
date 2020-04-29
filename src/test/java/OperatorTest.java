@@ -13,12 +13,12 @@ class OperatorTest {
 
     @Test
     void shouldPassToConfirmAddOperatorReturnedForInputStringAdd() {
-        assertEquals(Operator.ADD, Operator.lookForMatchingOperatorLabel("add"));
+        assertEquals(Operator.ADD, Operator.lookForOperatorWithMatchingLabel("add"));
     }
 
     @Test
     void shouldPassToConfirmNullReturnedForInputStringNone() {
-        assertNull(Operator.lookForMatchingOperatorLabel("none"));
+        assertNull(Operator.lookForOperatorWithMatchingLabel("none"));
     }
 
     @Test

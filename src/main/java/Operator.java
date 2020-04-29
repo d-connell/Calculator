@@ -50,7 +50,7 @@ public enum Operator {
                 .collect(Collectors.joining(", "));
     }
 
-    public static Operator lookForMatchingOperatorLabel(String input) {
+    public static Operator lookForOperatorWithMatchingLabel(String input) {
         return EnumSet.allOf(Operator.class)
                 .stream()
                 .filter(operator -> operator.label.equals(input))
