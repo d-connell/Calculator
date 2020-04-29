@@ -5,44 +5,59 @@ public class Controller {
     boolean isRunning;
 
     public Controller() {
-        isRunning = true;
         OperationType.checkLabelsAreUnique();
         MessagePrinter.welcome();
+        isRunning = true;
     }
 
     public void interact() {
         while (isRunning) {
             MessagePrinter.instruction();
             Scanner scanner = new Scanner(System.in);
-            String input = scanner.next().toLowerCase();
-            OperationType operationType = getOperationType(input);
+            double firstNumber = parseFirstInput(scanner.next());
+            String secondInput = scanner.next();
+            OperationType operationType = OperationType.match(secondInput);
             if (operationType == null) {
-                MessagePrinter.operationTypeNotRecognised(input);
+                MessagePrinter.operationTypeNotRecognised(secondInput);
             } else {
-                double x = getNumber(scanner);
-                double y = getNumber(scanner);
-                System.out.println(operationType.apply(x, y));
+                double secondNumber = getNumber(scanner);
+                double result = operationType.apply(firstNumber, secondNumber);
+                MessagePrinter.result(firstNumber, operationType.getLabel(), secondNumber, result);
             }
         }
     }
 
-    OperationType getOperationType(String input) {
-        OperationType operationType = null;
-        switch (input) {
+    double parseFirstInput(String input) {
+        double firstInput;
+        switch (input.toLowerCase()) {
             case "exit":
                 terminate();
             case "help":
-                MessagePrinter.standardHelpMessage();
-                interact();
-                break;
+                processHelpRequest();
             default:
-                operationType = OperationType.match(input);
+                firstInput = getFirstNumber(input);
         }
-        return operationType;
+        return firstInput;
     }
 
     private void terminate() {
         System.exit(0);
+    }
+
+    private void processHelpRequest() {
+        MessagePrinter.standardHelpMessage();
+        interact();
+    }
+
+    private double getFirstNumber(String input) {
+        double firstNumber = 0;
+        try {
+            firstNumber = Double.parseDouble(input);
+        } catch (NumberFormatException exception) {
+            MessagePrinter.firstInputNotRecognised();
+            interact();
+        }
+        return firstNumber;
     }
 
     private double getNumber(Scanner scanner) {

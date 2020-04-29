@@ -5,21 +5,9 @@ import static org.junit.jupiter.api.Assertions.*;
 class ControllerTest {
 
     @Test
-    void shouldPassToConfirmCorrectOperatorReturnedForInputAdd() {
+    void shouldPassToConfirmNumbersParsedCorrectly() {
         Controller controller = new Controller();
-        assertEquals(OperationType.ADD, controller.getOperationType("add"));
-    }
-
-    @Test
-    void shouldPassToConfirmNullOperatorReturnedForInputHelp() {
-        Controller controller = new Controller();
-        assertNull(controller.getOperationType("help"));
-    }
-
-    @Test
-    void shouldPassToConfirmNullOperatorReturnedForUnrecognisedInput() {
-        Controller controller = new Controller();
-        assertNull(controller.getOperationType("gibberish"));
+        assertEquals(-10.35, controller.parseFirstInput("-10.35"));
     }
 
 }

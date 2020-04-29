@@ -32,11 +32,7 @@ public enum OperationType {
                     .collect(Collectors.groupingBy(operationType -> operationType.label, Collectors.counting()))
                     .values()
                     .stream()
-                    .reduce(0L, (acc, element) -> element > acc ? element : acc) == 1;
-    }
-
-    public double apply(double x, double y) {
-        return binaryOperation.apply(x, y);
+                    .noneMatch(number -> number > 1);
     }
 
     public static String getLabelsAsString() {
@@ -51,6 +47,14 @@ public enum OperationType {
                 .stream()
                 .filter(operationType -> operationType.label.equals(input))
                 .reduce(null, (acc, element) -> element);
+    }
+
+    public double apply(double x, double y) {
+        return binaryOperation.apply(x, y);
+    }
+
+    public String getLabel() {
+        return label;
     }
 
 }
