@@ -30,7 +30,7 @@ public class CalculatorInterface {
                 terminate();
             case "help":
                 MessagePrinter.standardHelpMessage();
-                break;
+                return null;
             default:
                 operator = Operator.lookForOperatorWithMatchingLabel(input);
         }
