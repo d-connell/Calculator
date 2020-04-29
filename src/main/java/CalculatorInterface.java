@@ -6,11 +6,11 @@ public class CalculatorInterface {
 
     public CalculatorInterface() {
         running = true;
+        Operator.checkLabelsAreUnique();
         MessagePrinter.welcomeMessage();
-        interactWithUser();
     }
 
-    private void interactWithUser() {
+    public void interactWithUser() {
         while (running) {
             MessagePrinter.simpleInstruction();
             Scanner scanner = new Scanner(System.in);

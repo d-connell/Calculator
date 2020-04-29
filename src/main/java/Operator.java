@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.EnumSet;
 import java.util.stream.Collectors;
 
@@ -6,9 +7,7 @@ public enum Operator {
     ADD("add", Double::sum),
     SUBTRACT("subtract", (x, y) -> x - y),
     MULTIPLY("multiply", (x, y) -> x * y),
-    DIVIDE("divide", (x, y) -> x / y),
-    EXPONENTIAL("exponential", Math::pow),
-    REMAINDER("remainder", (x, y) -> x % y);
+    DIVIDE("divide", (x, y) -> x / y);
 
     private final String label;
     private final BinaryOperation binaryOperation;
@@ -20,6 +19,24 @@ public enum Operator {
     Operator(String label, final BinaryOperation binaryOperation) {
         this.label = label;
         this.binaryOperation = binaryOperation;
+    }
+
+    public static void checkLabelsAreUnique() {
+        if (!labelsAreUnique()) {
+            throw new IllegalComponentStateException("Operator labels must be unique.");
+        }
+    }
+
+    private static boolean labelsAreUnique() {
+        for (Operator firstOperator : EnumSet.allOf(Operator.class)) {
+            for (Operator secondOperator : EnumSet.allOf(Operator.class)) {
+                if (firstOperator != secondOperator
+                        && firstOperator.label.equals(secondOperator.label)) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     public double apply(double x, double y) {

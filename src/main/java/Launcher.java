@@ -1,7 +1,7 @@
 public class Launcher {
 
     public static void main(String[] args) {
-        new CalculatorInterface();
+        new CalculatorInterface().interactWithUser();
     }
 
 }
