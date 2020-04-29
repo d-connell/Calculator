@@ -28,7 +28,7 @@ public class Controller {
             case "exit":
                 terminate();
             case "help":
-                processHelpRequest();
+                help();
             default:
                 firstInput = parseNumber(input, true);
         }
@@ -39,7 +39,7 @@ public class Controller {
         System.exit(0);
     }
 
-    private void processHelpRequest() {
+    private void help() {
         MessagePrinter.standardHelpMessage();
         interact();
     }
