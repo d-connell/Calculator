@@ -18,15 +18,15 @@ public class MessagePrinter {
     }
 
     public static void firstInputNotRecognised() {
-        System.out.println("Please enter either a number, or the 'help' or 'exit' commands as the first input.");
+        System.out.println("The first input should be a number, 'help' or 'exit'.");
     }
 
     public static void operationTypeNotRecognised(String input) {
-        System.out.println("Requested operator '" + input + "' is not recognised, please try again.");
+        System.out.println("Requested operator '" + input + "' is not recognised.");
     }
 
     public static void requireNumber() {
-        System.out.println("A number is required for the third input, please try again.");
+        System.out.println("A number is required for the third input.");
     }
 
     public static void result(double firstNumber, String operationSymbol, double secondNumber, double result) {
