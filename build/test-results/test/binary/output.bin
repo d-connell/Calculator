@@ -1,0 +1,18 @@
+
+	#Welcome to the calculator program.
+
+	
+
+	LTo use the calculator, enter the desired operation followed by two numbers.
+
+	 Available operators: +, -, *, /
+
+		Example input: 2 * 3.
+
+	
+
+	(Enter exit to terminate the calculator.
+
+	,Enter help to see these instructions again.
+
+	
