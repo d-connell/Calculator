@@ -5,7 +5,7 @@ public class Controller {
     boolean isRunning;
 
     public Controller() {
-        OperationType.checkLabelsAreUnique();
+        Operation.checkLabelsAreUnique();
         MessagePrinter.welcome();
         isRunning = true;
     }
@@ -15,10 +15,10 @@ public class Controller {
             MessagePrinter.instruction();
             Scanner scanner = new Scanner(System.in);
             double firstNumber = parseFirstInput(scanner.next());
-            OperationType operationType = parseSecondInput(scanner.next());
+            Operation operation = parseSecondInput(scanner.next());
             double secondNumber = parseNumber(scanner.next(), false);
-            double result = operationType.apply(firstNumber, secondNumber);
-            MessagePrinter.result(firstNumber, operationType.getLabel(), secondNumber, result);
+            double result = operation.apply(firstNumber, secondNumber);
+            MessagePrinter.result(firstNumber, operation.getLabel(), secondNumber, result);
         }
     }
 
@@ -59,13 +59,13 @@ public class Controller {
         return number;
     }
 
-    private OperationType parseSecondInput(String input) {
-        OperationType operationType = OperationType.match(input);
-        if (operationType == null) {
+    private Operation parseSecondInput(String input) {
+        Operation operation = Operation.match(input);
+        if (operation == null) {
             MessagePrinter.operationTypeNotRecognised(input);
             interact();
         }
-        return operationType;
+        return operation;
     }
 
 }

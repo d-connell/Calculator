@@ -2,43 +2,43 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class OperationTypeTest {
+class OperationTest {
 
     @Test
     void shouldPassToConfirmStringOfOperatorNamesReturnsAsExpected() {
         // test will fail if the OperationType labels, order or items change
         String expected = "+, -, *, /";
-        assertEquals(expected, OperationType.getLabelsAsString());
+        assertEquals(expected, Operation.getLabelsAsString());
     }
 
     @Test
     void shouldPassToConfirmAddOperatorReturnedForInputStringAdd() {
-        assertEquals(OperationType.ADD, OperationType.match("+"));
+        assertEquals(Operation.ADD, Operation.match("+"));
     }
 
     @Test
     void shouldPassToConfirmNullOperatorReturnedForUnrecognisedInput() {
-        assertNull(OperationType.match("gibberish"));
+        assertNull(Operation.match("gibberish"));
     }
 
     @Test
     void shouldPassToConfirmADDLambdaHasExpectedLogic() {
-        assertEquals(10, OperationType.ADD.apply(4, 6));
+        assertEquals(10, Operation.ADD.apply(4, 6));
     }
 
     @Test
     void shouldPassToConfirmSUBTRACTLambdaHasExpectedLogic() {
-        assertEquals(5, OperationType.SUBTRACT.apply(10, 5));
+        assertEquals(5, Operation.SUBTRACT.apply(10, 5));
     }
 
     @Test
     void shouldPassToConfirmMULTIPLYLambdaHasExpectedLogic() {
-        assertEquals(10, OperationType.MULTIPLY.apply(2, 5));
+        assertEquals(10, Operation.MULTIPLY.apply(2, 5));
     }
 
     @Test
     void shouldPassToConfirmDIVIDELambdaHasExpectedLogic() {
-        assertEquals(2, OperationType.DIVIDE.apply(10, 5));
+        assertEquals(2, Operation.DIVIDE.apply(10, 5));
     }
 
 }

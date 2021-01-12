@@ -2,7 +2,7 @@ import java.awt.*;
 import java.util.EnumSet;
 import java.util.stream.Collectors;
 
-public enum OperationType {
+public enum Operation {
 
     ADD("+", Double::sum),
     SUBTRACT("-", (x, y) -> x - y),
@@ -16,7 +16,7 @@ public enum OperationType {
         double apply(double x, double y);
     }
 
-    OperationType(String label, final BinaryOperation binaryOperation) {
+    Operation(String label, final BinaryOperation binaryOperation) {
         this.label = label;
         this.binaryOperation = binaryOperation;
     }
@@ -28,24 +28,24 @@ public enum OperationType {
     }
 
     private static boolean hasUniqueLabels() {
-            return EnumSet.allOf(OperationType.class).stream()
-                    .collect(Collectors.groupingBy(operationType -> operationType.label, Collectors.counting()))
+            return EnumSet.allOf(Operation.class).stream()
+                    .collect(Collectors.groupingBy(operation -> operation.label, Collectors.counting()))
                     .values()
                     .stream()
                     .noneMatch(number -> number > 1);
     }
 
     public static String getLabelsAsString() {
-        return EnumSet.allOf(OperationType.class)
+        return EnumSet.allOf(Operation.class)
                 .stream()
-                .map(operationType -> operationType.label)
+                .map(operation -> operation.label)
                 .collect(Collectors.joining(", "));
     }
 
-    public static OperationType match(String input) {
-        return EnumSet.allOf(OperationType.class)
+    public static Operation match(String input) {
+        return EnumSet.allOf(Operation.class)
                 .stream()
-                .filter(operationType -> operationType.label.equals(input))
+                .filter(operation -> operation.label.equals(input))
                 .reduce(null, (acc, element) -> element);
     }
 

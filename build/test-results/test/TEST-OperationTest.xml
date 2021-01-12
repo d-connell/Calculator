@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="OperationTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2021-01-12T01:00:53" hostname="MacBook" time="0.092">
+  <properties/>
+  <testcase name="shouldPassToConfirmSUBTRACTLambdaHasExpectedLogic()" classname="OperationTest" time="0.044"/>
+  <testcase name="shouldPassToConfirmADDLambdaHasExpectedLogic()" classname="OperationTest" time="0.004"/>
+  <testcase name="shouldPassToConfirmMULTIPLYLambdaHasExpectedLogic()" classname="OperationTest" time="0.002"/>
+  <testcase name="shouldPassToConfirmNullOperatorReturnedForUnrecognisedInput()" classname="OperationTest" time="0.008"/>
+  <testcase name="shouldPassToConfirmAddOperatorReturnedForInputStringAdd()" classname="OperationTest" time="0.005"/>
+  <testcase name="shouldPassToConfirmStringOfOperatorNamesReturnsAsExpected()" classname="OperationTest" time="0.003"/>
+  <testcase name="shouldPassToConfirmDIVIDELambdaHasExpectedLogic()" classname="OperationTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -7,7 +7,7 @@ public class MessagePrinter {
 
     public static void standardHelpMessage() {
         System.out.println("To use the calculator, enter the desired operation followed by two numbers.");
-        System.out.println("Available operators: " + OperationType.getLabelsAsString());
+        System.out.println("Available operators: " + Operation.getLabelsAsString());
         System.out.println("\tExample input: 2 * 3.\n");
         System.out.println("Enter exit to terminate the calculator.");
         System.out.println("Enter help to see these instructions again.\n");

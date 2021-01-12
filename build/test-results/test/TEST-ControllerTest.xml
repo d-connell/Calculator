@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ControllerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-01-12T00:42:08" hostname="MacBook" time="0.023">
+<testsuite name="ControllerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-01-12T01:00:53" hostname="MacBook" time="0.034">
   <properties/>
-  <testcase name="shouldPassToConfirmNumbersParsedCorrectly()" classname="ControllerTest" time="0.023"/>
+  <testcase name="shouldPassToConfirmNumbersParsedCorrectly()" classname="ControllerTest" time="0.034"/>
   <system-out><![CDATA[Welcome to the calculator program.
 
 To use the calculator, enter the desired operation followed by two numbers.

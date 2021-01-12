@@ -1,7 +1,8 @@
 public class Launcher {
 
     public static void main(String[] args) {
-        new Controller().interact();
+        Controller controller = new Controller();
+        controller.interact();
     }
 
 }
