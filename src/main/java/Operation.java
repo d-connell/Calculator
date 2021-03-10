@@ -16,7 +16,7 @@ public enum Operation {
         double apply(double x, double y);
     }
 
-    Operation(String label, final BinaryOperation binaryOperation) {
+    Operation(String label, BinaryOperation binaryOperation) {
         this.label = label;
         this.binaryOperation = binaryOperation;
     }
@@ -28,7 +28,8 @@ public enum Operation {
     }
 
     private static boolean hasUniqueLabels() {
-            return EnumSet.allOf(Operation.class).stream()
+            return EnumSet.allOf(Operation.class)
+                    .stream()
                     .collect(Collectors.groupingBy(operation -> operation.label, Collectors.counting()))
                     .values()
                     .stream()

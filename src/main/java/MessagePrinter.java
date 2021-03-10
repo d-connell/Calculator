@@ -6,7 +6,7 @@ public class MessagePrinter {
     }
 
     public static void standardHelpMessage() {
-        System.out.println("To use the calculator, enter the desired operation followed by two numbers.");
+        System.out.println("To use the calculator, enter the desired calculation separated by spaces.");
         System.out.println("Available operators: " + Operation.getLabelsAsString());
         System.out.println("\tExample input: 2 * 3.\n");
         System.out.println("Enter exit to terminate the calculator.");
@@ -29,7 +29,8 @@ public class MessagePrinter {
         System.out.println("A number is required for the third input.");
     }
 
-    public static void result(double firstNumber, String operationSymbol, double secondNumber, double result) {
+    public static void result(double firstNumber, String operationSymbol,
+                              double secondNumber, double result) {
         System.out.printf("%f %s %f = %f\n", firstNumber, operationSymbol, secondNumber, result);
     }
 
